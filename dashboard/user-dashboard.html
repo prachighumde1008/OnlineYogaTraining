@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Yoga AI</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .dashboard-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 230px;
+            background: #5c4033; /* brown color */
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #7a5a48;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+
+            background: 
+                
+                url('https://i.pinimg.com/1200x/41/50/31/41503168827b9b4ee12faff2fee8d634.jpg') no-repeat center/cover;
+        }
+
+        .header {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #4f6f61;
+        }
+
+        /* CARDS */
+        .dashboard-cards {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 250px;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #5c4033;
+        }
+
+        .card p {
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .dashboard-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                display: flex;
+                overflow-x: auto;
+            }
+
+            .sidebar a {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h2>Yoga AI</h2>
+
+            <a href="user-dashboard.html">Dashboard</a>
+            <a href="../pages/practice.html">Practice</a>
+            <a href="../pages/progress.html">Progress</a>
+            <a href="../pages/poses.html">Poses</a>
+            <a href="../pages/about.html">About</a>
+            <a href="../pages/contact.html">Contact</a>
+            <a href="../index.html">Logout</a>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="header">Welcome to Your Dashboard 🌿</div>
+
+            <div class="dashboard-cards">
+
+                <div class="card">
+                    <h3>Daily Practice</h3>
+                    <p>Start your guided yoga session with AI posture detection.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Your Progress</h3>
+                    <p>Track your improvement and consistency over time.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Yoga Poses</h3>
+                    <p>Explore different yoga poses with detailed guidance.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Health Tips</h3>
+                    <p>Get daily tips for a healthy body and peaceful mind.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

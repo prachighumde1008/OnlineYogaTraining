@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yoga Poses</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url("https://i.pinimg.com/736x/e8/61/82/e86182933b84b8ca51a70dc7e1849f4e.jpg") no-repeat center/cover;
+}
+
+.container {
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: linear-gradient(to bottom, #5a3e2b, #7b5e45);
+    color: white;
+    padding: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    margin: 10px 0;
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    padding: 30px;
+    color: white;
+}
+
+/* INFO TEXT */
+.info {
+    margin-bottom: 20px;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* GRID */
+.pose-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+/* CARD */
+.pose-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pose-card:hover {
+    transform: scale(1.05);
+}
+
+.pose-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+    <h2>Yoga AI</h2>
+    <a href="../dashboard/user-dashboard.html">Dashboard</a>
+    <a href="practice.html">Practice</a>
+    <a href="progress.html">Progress</a>
+    <a href="poses.html">Poses</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="logout.html">Logout</a>
+</div>
+
+<div class="main">
+
+    <h1>Yoga Poses</h1>
+
+    <!-- INSTRUCTION -->
+    <div class="info">
+        👉 Single Click = Watch Video  
+        👉 Double Click = Start Practice
+    </div>
+
+    <div class="pose-grid">
+
+        <!-- TREE POSE -->
+        <div class="pose-card"
+            onclick="handleClick('https://www.youtube.com/watch?v=v7AYKMP6rOE')"
+            ondblclick="startPractice('Tree Pose')">
+
+            <img src="https://i.pinimg.com/1200x/ed/20/66/ed206644e0b6ca52d833468963b0b598.jpg">
+            <h3>Tree Pose</h3>
+        </div>
+
+        <!-- LOTUS -->
+        <div class="pose-card"
+            onclick="handleClick('https://www.youtube.com/watch?v=F7zsZ9n9K5k')"
+            ondblclick="startPractice('Lotus Pose')">
+
+            <img src="https://i.pinimg.com/1200x/f0/3d/f7/f03df76e50f29cb663f90792e51b9881.jpg">
+            <h3>Lotus Pose</h3>
+        </div>
+
+        <!-- FORWARD BEND -->
+        <div class="pose-card"
+            onclick="handleClick('https://www.youtube.com/watch?v=2MJGg-dUKh0')"
+            ondblclick="startPractice('Forward Bend')">
+
+            <img src="https://i.pinimg.com/1200x/34/c0/22/34c02271292890b55e0d4850e6c520f2.jpg">
+            <h3>Forward Bend</h3>
+        </div>
+
+        <!-- CHILD POSE -->
+        <div class="pose-card"
+            onclick="handleClick('https://www.youtube.com/watch?v=2MJGg-dUKh0')"
+            ondblclick="startPractice('Child Pose')">
+
+            <img src="https://chakrapractice.com/wp-content/uploads/2023/05/Childs-Pose-25.5.23.png">
+            <h3>Child Pose</h3>
+        </div>
+
+        <!-- MOUNTAIN -->
+        <div class="pose-card"
+            onclick="handleClick('https://www.youtube.com/watch?v=QpKjzQ0J1qI')"
+            ondblclick="startPractice('Mountain Pose')">
+
+            <img src="https://chakrapractice.com/wp-content/uploads/2023/05/Mountain-Pose-25.5.23.png">
+            <h3>Mountain Pose</h3>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<script>
+
+let clickTimer = null;
+
+/* SINGLE CLICK → VIDEO */
+function handleClick(link) {
+    if (clickTimer) {
+        clearTimeout(clickTimer);
+        clickTimer = null;
+        return;
+    }
+
+    clickTimer = setTimeout(() => {
+        window.open(link, "_blank");
+        clickTimer = null;
+    }, 250);
+}
+
+/* DOUBLE CLICK → PRACTICE */
+function startPractice(pose) {
+
+    localStorage.setItem("selectedPose", pose);
+
+    window.location.href = "practice.html";
+}
+
+</script>
+
+</body>
+</html>

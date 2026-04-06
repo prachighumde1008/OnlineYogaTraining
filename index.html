@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga AI - Home</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(rgba(34, 49, 63, 0.7), rgba(34, 49, 63, 0.7)),
+                        url('https://i.pinimg.com/1200x/04/5d/61/045d615ef7929e1efad6426a2c6a3564.jpg') no-repeat center center/cover;
+            color: #f5f5f5;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #a8d5ba;
+        }
+
+        .nav-buttons a {
+            text-decoration: none;
+            margin-left: 15px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background-color: #6c8f7a;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #5a7a67;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #c8e6c9;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .hero .cta-buttons a {
+            text-decoration: none;
+            margin: 10px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            background-color: #7fa998;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .hero .cta-buttons a:hover {
+            background-color: #6c8f7a;
+        }
+
+        /* Info Section */
+        .info {
+            background-color: #f0f7f4;
+            color: #333;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .info h2 {
+            margin-bottom: 20px;
+            color: #4f6f61;
+        }
+
+        .info p {
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #22313f;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">Yoga AI</div>
+        <div class="nav-buttons">
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Yoga AI</h1>
+        <p>
+            Transform your body and mind with guided yoga sessions powered by AI.
+            Practice smarter, track your progress, and improve your posture with real-time feedback.
+        </p>
+
+        <div class="cta-buttons">
+            <!-- UPDATED BUTTONS -->
+            <a href="#" onclick="checkLogin('practice')">Start Practice</a>
+            <a href="#" onclick="checkLogin('poses')">Explore Poses</a>
+        </div>
+    </div>
+
+    <!-- Information Section -->
+    <div class="info">
+        <h2>Why Yoga?</h2>
+        <p>
+            Yoga is a powerful practice that improves flexibility, strength, and mental clarity.
+            Regular yoga helps reduce stress, enhance breathing, and maintain overall well-being.
+            With our AI-powered system, you get real-time posture correction and personalized guidance,
+            making your yoga journey more effective and engaging.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 Yoga AI | Stay Healthy & Mindful
+    </footer>
+
+    <!-- 🔥 LOGIN CHECK SCRIPT -->
+    <script>
+        function checkLogin(page) {
+
+            let user = localStorage.getItem("user");
+
+            if (!user) {
+                // Not logged in → go to login
+                localStorage.setItem("redirectPage", page);
+                window.location.href = "login.html";
+            } else {
+                // Already logged in → go to page
+                if (page === "practice") {
+                    window.location.href = "pages/practice.html";
+                } else {
+                    window.location.href = "pages/poses.html";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #eef5f2; /* soft light green */
+    color: #333;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #22313f;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+    color: #a8d5ba;
+}
+
+.nav-links a {
+    text-decoration: none;
+    margin-left: 15px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    background-color: #6c8f7a;
+    color: white;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #5a7a67;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    height: 90vh;
+    background: linear-gradient(rgba(34, 49, 63, 0.7), rgba(34, 49, 63, 0.7)),
+                url('https://essencerising.com/understanding-the-seven-chakras-for-kundalini-activation/') no-repeat center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #c8e6c9;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 700px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 25px;
+    background-color: #7fa998;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #6c8f7a;
+}
+
+/* ===== INFO SECTION ===== */
+.info {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.info h2 {
+    margin-bottom: 20px;
+    color: #4f6f61;
+}
+
+.info p {
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.7;
+}
+
+/* ===== FORMS (LOGIN / REGISTER) ===== */
+.form-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box {
+    background: white;
+    padding: 30px;
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4f6f61;
+}
+
+.form-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.form-box button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: #7fa998;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-box button:hover {
+    background-color: #6c8f7a;
+}
+
+/* ===== CARDS (POSES / DASHBOARD) ===== */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    width: 250px;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card h3 {
+    margin: 10px 0;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #22313f;
+    color: #ccc;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

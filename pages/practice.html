@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yoga Practice - Yoga AI</title>
+
+<!-- MediaPipe -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* CAMERA */
+.camera-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: black;
+}
+
+/* VIDEO */
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scaleX(-1);
+}
+
+/* CANVAS */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    pointer-events: none;
+    transform: scaleX(-1);
+}
+
+/* TEXT BOX */
+.overlay {
+    position: absolute;
+    left: 20px;
+    color: white;
+    background: rgba(0,0,0,0.7);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 18px;
+}
+
+/* POSITIONS */
+#poseText { top: 20px; }
+#selectedPose { top: 70px; }
+#statusText { top: 120px; }
+
+/* PROGRESS */
+.progress-box {
+    position: absolute;
+    top: 170px;
+    left: 20px;
+    width: 250px;
+    height: 15px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #7fa998;
+}
+
+/* TIMER */
+#timerBox {
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    color: white;
+    background: rgba(0,0,0,0.7);
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+/* BUTTONS */
+.controls {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.controls button {
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 25px;
+    border: none;
+    background: #7fa998;
+    color: white;
+}
+
+/* BACK */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="camera-container">
+
+    <!-- CAMERA -->
+    <video id="video" autoplay playsinline></video>
+
+    <!-- DETECTED POSE -->
+    <div id="poseText" class="overlay">🧘 Detecting...</div>
+
+    <!-- SELECTED POSE -->
+    <div id="selectedPose" class="overlay">🎯 Selected: --</div>
+
+    <!-- STATUS -->
+    <div id="statusText" class="overlay">📏 Waiting...</div>
+
+    <!-- PROGRESS -->
+    <div class="progress-box">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- TIMER -->
+    <div id="timerBox">⏱ 0 sec</div>
+
+    <!-- BACK -->
+    <a href="../dashboard/user-dashboard.html" class="back-btn">⬅ Back</a>
+
+    <!-- BUTTONS -->
+    <div class="controls">
+        <button onclick="startCamera()">Start</button>
+        <button onclick="stopCamera()">Stop</button>
+    </div>
+
+</div>
+
+<!-- SHOW SELECTED POSE -->
+<script>
+let selected = localStorage.getItem("selectedPose");
+
+if (selected) {
+    document.getElementById("selectedPose").innerHTML =
+        "🎯 Selected: " + selected;
+} else {
+    document.getElementById("selectedPose").innerHTML =
+        "🎯 No pose selected";
+}
+</script>
+
+<!-- CAMERA SCRIPT -->
+<script src="../js/camera.js"></script>
+
+</body>
+</html>
