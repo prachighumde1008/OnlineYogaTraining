@@ -1,91 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yoga Project - About</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f9f2;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - Yoga AI</title>
 
-        header {
-            background-color: #2e7d32;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-        .container {
-            padding: 30px;
-            max-width: 900px;
-            margin: auto;
-            background-color: white;
-            margin-top: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-        }
+<style>
 
-        h2 {
-            color: #2e7d32;
-        }
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #9b8463;
+}
 
-        p {
-            line-height: 1.6;
-            font-size: 16px;
-        }
+.container {
+    display: flex;
+    min-height: 100vh;
+}
 
-        .note {
-            background-color: #fff3cd;
-            padding: 15px;
-            border-left: 5px solid #ffcc00;
-            margin-top: 20px;
-        }
+/* SIDEBAR (SAME DESIGN) */
+.sidebar {
+    width: 220px;
+    background: #5c4033;
+    color: white;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #2e7d32;
-            color: white;
-            margin-top: 30px;
-        }
-    </style>
+.sidebar h2 {
+    margin: 0 0 40px;
+    font-size: 28px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 28px 0;
+    font-size: 24px;
+}
+
+/* MAIN (SAME STYLE) */
+.main {
+    flex: 1;
+    padding: 30px 40px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+/* BACKGROUND CIRCLES */
+.main::before,
+.main::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    z-index: 0;
+}
+
+.main::before {
+    width: 600px;
+    height: 600px;
+    border: 3px solid rgba(255,255,255,0.5);
+    left: -200px;
+    bottom: -180px;
+}
+
+.main::after {
+    width: 850px;
+    height: 850px;
+    border: 3px solid rgba(255,255,255,0.35);
+    right: -280px;
+    top: -280px;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+/* TITLE */
+.page-title {
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+/* CARD STYLE */
+.about-box {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* HEADINGS */
+.about-box h2 {
+    margin-top: 0;
+}
+
+/* FEATURES LIST */
+.features {
+    margin-top: 10px;
+}
+
+.features li {
+    margin: 8px 0;
+}
+
+</style>
 </head>
+
 <body>
 
-<header>
-    <h1>Yoga Project</h1>
-    <p>About Page</p>
-</header>
-
 <div class="container">
-    <h2>About This Project</h2>
-    <p>
-        This Yoga Project is designed with a fixed structure, pattern, and features to ensure consistency and stability throughout the system.
-        The layout and functionality are carefully planned so that users can easily navigate and understand the content.
-    </p>
 
-    <p>
-        The pattern used in this project should not be changed, as it maintains uniformity across all pages.
-        Any modification may affect the design flow and user experience.
-    </p>
-
-    <p>
-        The features included in this project are interconnected and optimized for smooth performance.
-        Therefore, they should remain unchanged to preserve the intended functionality of the system.
-    </p>
-
-    <div class="note">
-        <strong>Important Note:</strong> Do not change the pattern or features of this project, as it may disrupt the overall structure and working of the application.
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>Yoga AI</h2>
+        <a href="../dashboard/user-dashboard.html">Dashboard</a>
+        <a href="practice.html">Practice</a>
+        <a href="progress.html">Progress</a>
+        <a href="poses.html">Poses</a>
+        <a href="health_tips.html">Health Tips</a>
+        <a href="about.html">About</a>
+        <a href="../subscription.html">Subscription</a>
+        <a href="contact.html">Contact</a>
+        <a href="logout.html">Logout</a>
     </div>
-</div>
 
-<footer>
-    <p>&copy; 2026 Yoga Project | All Rights Reserved</p>
-</footer>
+    <!-- MAIN -->
+    <div class="main">
+        <div class="content">
+
+            <h1 class="page-title">About Yoga AI</h1>
+
+            <div class="about-box">
+                <h2>🌿 What is Yoga AI?</h2>
+                <p>
+                    Yoga AI is an intelligent yoga training system that helps users practice yoga
+                    with real-time feedback. It uses camera-based pose detection to analyze
+                    your posture and guide you toward correct alignment.
+                </p>
+            </div>
+
+            <div class="about-box">
+                <h2>🎯 Our Mission</h2>
+                <p>
+                    Our goal is to make yoga accessible, accurate, and interactive.
+                    Whether you are a beginner or advanced practitioner,
+                    Yoga AI helps you improve safely and effectively.
+                </p>
+            </div>
+
+            <div class="about-box">
+                <h2>✨ Features</h2>
+                <ul class="features">
+                    <li>✔ Real-time pose detection using AI</li>
+                    <li>✔ Accuracy tracking for each pose</li>
+                    <li>✔ Progress monitoring with history</li>
+                    <li>✔ Guided practice through video tutorials</li>
+                    <li>✔ Easy-to-use interface</li>
+                </ul>
+            </div>
+
+            <div class="about-box">
+                <h2>💡 Why Use Yoga AI?</h2>
+                <p>
+                    Practicing yoga alone can lead to incorrect posture.
+                    Yoga AI ensures you perform each pose correctly,
+                    helping prevent injuries and improving results faster.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>

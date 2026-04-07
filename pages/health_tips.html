@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Tips</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #9b8463;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: #5c4033;
+    color: white;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    margin: 0 0 40px;
+    font-size: 28px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 28px 0;
+    font-size: 24px;
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    padding: 30px 40px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(rgba(70, 45, 25, 0.5), rgba(70, 45, 25, 0.5)),
+                url("https://i.pinimg.com/736x/71/33/30/713330dbeabacd771b689e766a868077.jpg") no-repeat center center/cover;
+}
+
+/* decorative background */
+.main::before,
+.main::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.main::before {
+    width: 600px;
+    height: 600px;
+    border: 3px solid rgba(255,255,255,0.4);
+    left: -200px;
+    bottom: -180px;
+}
+
+.main::after {
+    width: 850px;
+    height: 850px;
+    border: 3px solid rgba(255,255,255,0.25);
+    right: -280px;
+    top: -280px;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* TIP BOX */
+.tip-box {
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.tip-box h2 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.tip-box p {
+    line-height: 1.7;
+    font-size: 17px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+        <h2>Yoga AI</h2>
+        <a href="../dashboard/user-dashboard.html">Dashboard</a>
+        <a href="practice.html">Practice</a>
+        <a href="progress.html">Progress</a>
+        <a href="poses.html">Poses</a>
+        <a href="health-tips.html">Health Tips</a>
+        <a href="about.html">About</a>
+        <a href="../subscription.html">Subscription</a>
+        <a href="contact.html">Contact</a>
+        <a href="logout.html">Logout</a>
+    </div>
+
+    <div class="main">
+        <div class="content">
+
+            <h1 class="page-title">Health Tips</h1>
+
+            <div class="tip-box">
+                <h2>1. Stay Hydrated</h2>
+                <p>
+                    Drink enough water before and after yoga practice. Proper hydration helps maintain
+                    energy levels, improves flexibility, and prevents muscle cramps.
+                </p>
+            </div>
+
+            <div class="tip-box">
+                <h2>2. Practice on an Empty or Light Stomach</h2>
+                <p>
+                    It is best to do yoga at least 2 to 3 hours after a heavy meal. A light stomach
+                    helps you move freely and comfortably during poses.
+                </p>
+            </div>
+
+            <div class="tip-box">
+                <h2>3. Focus on Breathing</h2>
+                <p>
+                    Deep and controlled breathing is very important in yoga. It relaxes the mind,
+                    improves oxygen flow, and helps you hold poses more effectively.
+                </p>
+            </div>
+
+            <div class="tip-box">
+                <h2>4. Maintain Correct Posture</h2>
+                <p>
+                    Correct posture prevents injuries and ensures you get the full benefit of each pose.
+                    Practice slowly and pay attention to your body alignment.
+                </p>
+            </div>
+
+            <div class="tip-box">
+                <h2>5. Be Consistent</h2>
+                <p>
+                    Regular yoga practice improves strength, flexibility, balance, and mental peace.
+                    Even 15 to 20 minutes daily can make a big difference.
+                </p>
+            </div>
+
+            <div class="tip-box">
+                <h2>6. Listen to Your Body</h2>
+                <p>
+                    Do not force difficult poses. Stop when you feel pain and progress step by step.
+                    Yoga is about balance and awareness, not competition.
+                </p>
+            </div>
+
+            <div class="tip-box">
+                <h2>7. Sleep and Nutrition Matter</h2>
+                <p>
+                    Along with yoga, proper sleep and balanced nutrition are essential for a healthy
+                    body and mind. Eat fresh fruits, vegetables, and nutritious food regularly.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

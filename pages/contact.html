@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Yoga AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #9b8463;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: #5c4033;
+    color: white;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    margin: 0 0 40px;
+    font-size: 28px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 28px 0;
+    font-size: 24px;
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    padding: 30px 40px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+/* BACKGROUND CIRCLES */
+.main::before,
+.main::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    z-index: 0;
+}
+
+.main::before {
+    width: 600px;
+    height: 600px;
+    border: 3px solid rgba(255,255,255,0.5);
+    left: -200px;
+    bottom: -180px;
+}
+
+.main::after {
+    width: 850px;
+    height: 850px;
+    border: 3px solid rgba(255,255,255,0.35);
+    right: -280px;
+    top: -280px;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+/* TITLE */
+.page-title {
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+/* CONTACT BOX */
+.contact-box {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 25px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* FORM */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-form label {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.contact-form button {
+    width: fit-content;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    background: #8fc3b1;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    opacity: 0.9;
+}
+
+.contact-info {
+    margin-top: 25px;
+    line-height: 1.8;
+    font-size: 17px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>Yoga AI</h2>
+        <a href="../dashboard/user-dashboard.html">Dashboard</a>
+        <a href="practice.html">Practice</a>
+        <a href="progress.html">Progress</a>
+        <a href="poses.html">Poses</a>
+        <a href="health_tips.html">Health Tips</a>
+        <a href="about.html">About</a>
+        <a href="../subscription.html">Subscription</a>
+        <a href="contact.html">Contact</a>
+        <a href="logout.html">Logout</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+        <div class="content">
+
+            <h1 class="page-title">Contact Us</h1>
+
+            <div class="contact-box">
+                <form class="contact-form">
+                    <div>
+                        <label for="name">Your Name</label><br>
+                        <input type="text" id="name" placeholder="Enter your name">
+                    </div>
+
+                    <div>
+                        <label for="email">Your Email</label><br>
+                        <input type="email" id="email" placeholder="Enter your email">
+                    </div>
+
+                    <div>
+                        <label for="message">Your Message</label><br>
+                        <textarea id="message" placeholder="Write your message here..."></textarea>
+                    </div>
+
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <div class="contact-info">
+                    <p><strong>Email:</strong> support@yogaai.com</p>
+                    <p><strong>Phone:</strong> +91 98765 43210</p>
+                    <p><strong>Address:</strong> Pune, Maharashtra, India</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

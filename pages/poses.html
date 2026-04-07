@@ -8,184 +8,301 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                url("https://i.pinimg.com/736x/e8/61/82/e86182933b84b8ca51a70dc7e1849f4e.jpg") no-repeat center/cover;
+    background: #9b8463;
 }
 
 .container {
     display: flex;
+    min-height: 100vh;
 }
 
 /* SIDEBAR */
 .sidebar {
     width: 220px;
-    height: 100vh;
-    background: linear-gradient(to bottom, #5a3e2b, #7b5e45);
+    background: #5c4033;
     color: white;
-    padding: 20px;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    margin: 0 0 40px;
+    font-size: 28px;
 }
 
 .sidebar a {
     display: block;
     color: white;
-    padding: 10px;
     text-decoration: none;
-    margin: 10px 0;
+    margin: 28px 0;
+    font-size: 24px;
 }
 
 /* MAIN */
 .main {
     flex: 1;
-    padding: 30px;
+    padding: 30px 40px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+/* decorative background */
+.main::before,
+.main::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    z-index: 0;
+}
+
+.main::before {
+    width: 600px;
+    height: 600px;
+    border: 3px solid rgba(255,255,255,0.5);
+    left: -200px;
+    bottom: -180px;
+}
+
+.main::after {
+    width: 850px;
+    height: 850px;
+    border: 3px solid rgba(255,255,255,0.35);
+    right: -280px;
+    top: -280px;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+.page-title {
+    text-align: center;
     color: white;
+    font-size: 34px;
+    margin: 10px 0 25px;
+    font-weight: 600;
 }
 
-/* INFO TEXT */
+/* instruction */
 .info {
-    margin-bottom: 20px;
-    background: rgba(0,0,0,0.5);
-    padding: 10px;
+    color: white;
+    background: rgba(0,0,0,0.18);
+    padding: 10px 14px;
     border-radius: 10px;
+    margin-bottom: 20px;
+    display: inline-block;
 }
 
-/* GRID */
+/* pose grid */
 .pose-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 24px;
 }
 
-/* CARD */
 .pose-card {
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
-    padding: 15px;
+    padding: 16px;
     text-align: center;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.3s ease;
+    user-select: none;
 }
 
 .pose-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
 .pose-card img {
     width: 100%;
     height: 180px;
     object-fit: contain;
+    border-radius: 10px;
 }
 
+.pose-card h3 {
+    color: white;
+    margin: 12px 0 0;
+    font-size: 20px;
+}
+
+/* video section */
+.video-section {
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.video-title {
+    color: white;
+    font-size: 34px;
+    margin-bottom: 22px;
+    font-weight: 600;
+}
+
+.video-box {
+    background: #f5f1ec;
+    padding: 18px;
+    border-radius: 24px;
+    width: 860px;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.video-box iframe {
+    width: 100%;
+    height: 470px;
+    border: none;
+    border-radius: 18px;
+    background: black;
+}
+
+.back-btn {
+    margin-top: 26px;
+    background: #8fc3b1;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 28px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    opacity: 0.92;
+}
 </style>
 </head>
-
 <body>
 
 <div class="container">
 
-<div class="sidebar">
-    <h2>Yoga AI</h2>
-    <a href="../dashboard/user-dashboard.html">Dashboard</a>
-    <a href="practice.html">Practice</a>
-    <a href="progress.html">Progress</a>
-    <a href="poses.html">Poses</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="logout.html">Logout</a>
-</div>
-
-<div class="main">
-
-    <h1>Yoga Poses</h1>
-
-    <!-- INSTRUCTION -->
-    <div class="info">
-        👉 Single Click = Watch Video  
-        👉 Double Click = Start Practice
+    <div class="sidebar">
+        <h2>Yoga AI</h2>
+        <a href="../dashboard/user-dashboard.html">Dashboard</a>
+        <a href="practice.html">Practice</a>
+        <a href="progress.html">Progress</a>
+        <a href="poses.html">Poses</a>
+        <a href="health_tips.html">Health Tips</a>
+        <a href="about.html">About</a>
+        <a href="../subscription.html">Subscription</a>
+        <a href="contact.html">Contact</a>
+        <a href="logout.html">Logout</a>
     </div>
 
-    <div class="pose-grid">
+    <div class="main">
+        <div class="content">
 
-        <!-- TREE POSE -->
-        <div class="pose-card"
-            onclick="handleClick('https://www.youtube.com/watch?v=v7AYKMP6rOE')"
-            ondblclick="startPractice('Tree Pose')">
+            <!-- POSE LIST SECTION -->
+            <div id="posesSection">
+                <h1 class="page-title">Yoga Poses</h1>
 
-            <img src="https://i.pinimg.com/1200x/ed/20/66/ed206644e0b6ca52d833468963b0b598.jpg">
-            <h3>Tree Pose</h3>
+                <div class="info">
+                    👉 Single Click = Watch Video on same page <br>
+                    👉 Double Click = Start Practice
+                </div>
+
+                <div class="pose-grid">
+
+                    <div class="pose-card"
+                         onclick="handlePoseClick('Tree Pose','Tree_pose.mp4')"
+                         ondblclick="startPractice('Tree Pose')">
+                        <img src="https://i.pinimg.com/1200x/ed/20/66/ed206644e0b6ca52d833468963b0b598.jpg" alt="Tree Pose">
+                        <h3>Tree Pose</h3>
+                    </div>
+
+                    <div class="pose-card"
+                         onclick="handlePoseClick('Lotus Pose','padmasan.mp4')"
+                         ondblclick="startPractice('Lotus Pose')">
+                        <img src="https://i.pinimg.com/1200x/f0/3d/f7/f03df76e50f29cb663f90792e51b9881.jpg" alt="Lotus Pose">
+                        <h3>Lotus Pose</h3>
+                    </div>
+
+                    <div class="pose-card"
+                         onclick="handlePoseClick('Forward Bend','Uttanasana.mp4')"
+                         ondblclick="startPractice('Forward Bend')">
+                        <img src="https://i.pinimg.com/1200x/34/c0/22/34c02271292890b55e0d4850e6c520f2.jpg" alt="Forward Bend">
+                        <h3>Forward Bend</h3>
+                    </div>
+
+                    <div class="pose-card"
+                         onclick="handlePoseClick('Child Pose','Child_Pose.mp4')"
+                         ondblclick="startPractice('Child Pose')">
+                        <img src="https://chakrapractice.com/wp-content/uploads/2023/05/Childs-Pose-25.5.23.png" alt="Child Pose">
+                        <h3>Child Pose</h3>
+                    </div>
+
+                    <div class="pose-card"
+                         onclick="handlePoseClick('Mountain Pose','Tadasana.mp4')"
+                         ondblclick="startPractice('Mountain Pose')">
+                        <img src="https://chakrapractice.com/wp-content/uploads/2023/05/Mountain-Pose-25.5.23.png" alt="Mountain Pose">
+                        <h3>Mountain Pose</h3>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- VIDEO SECTION -->
+            <div id="videoSection" class="video-section">
+                <h1 id="videoTitle" class="video-title">Tree Pose</h1>
+
+                <div class="video-box">
+                    <iframe id="videoFrame" src="" allowfullscreen></iframe>
+                </div>
+
+                <button class="back-btn" onclick="backToPoses()">← Back to Poses</button>
+            </div>
+
         </div>
-
-        <!-- LOTUS -->
-        <div class="pose-card"
-            onclick="handleClick('https://www.youtube.com/watch?v=F7zsZ9n9K5k')"
-            ondblclick="startPractice('Lotus Pose')">
-
-            <img src="https://i.pinimg.com/1200x/f0/3d/f7/f03df76e50f29cb663f90792e51b9881.jpg">
-            <h3>Lotus Pose</h3>
-        </div>
-
-        <!-- FORWARD BEND -->
-        <div class="pose-card"
-            onclick="handleClick('https://www.youtube.com/watch?v=2MJGg-dUKh0')"
-            ondblclick="startPractice('Forward Bend')">
-
-            <img src="https://i.pinimg.com/1200x/34/c0/22/34c02271292890b55e0d4850e6c520f2.jpg">
-            <h3>Forward Bend</h3>
-        </div>
-
-        <!-- CHILD POSE -->
-        <div class="pose-card"
-            onclick="handleClick('https://www.youtube.com/watch?v=2MJGg-dUKh0')"
-            ondblclick="startPractice('Child Pose')">
-
-            <img src="https://chakrapractice.com/wp-content/uploads/2023/05/Childs-Pose-25.5.23.png">
-            <h3>Child Pose</h3>
-        </div>
-
-        <!-- MOUNTAIN -->
-        <div class="pose-card"
-            onclick="handleClick('https://www.youtube.com/watch?v=QpKjzQ0J1qI')"
-            ondblclick="startPractice('Mountain Pose')">
-
-            <img src="https://chakrapractice.com/wp-content/uploads/2023/05/Mountain-Pose-25.5.23.png">
-            <h3>Mountain Pose</h3>
-        </div>
-
     </div>
 
-</div>
 </div>
 
 <script>
-
 let clickTimer = null;
 
-/* SINGLE CLICK → VIDEO */
-function handleClick(link) {
+function handlePoseClick(title, embedUrl) {
     if (clickTimer) {
         clearTimeout(clickTimer);
-        clickTimer = null;
-        return;
     }
 
     clickTimer = setTimeout(() => {
-        window.open(link, "_blank");
+        showVideo(title, embedUrl);
         clickTimer = null;
     }, 250);
 }
 
-/* DOUBLE CLICK → PRACTICE */
-function startPractice(pose) {
-
-    localStorage.setItem("selectedPose", pose);
-
-    window.location.href = "practice.html";
+function showVideo(title, embedUrl) {
+    document.getElementById("posesSection").style.display = "none";
+    document.getElementById("videoSection").style.display = "block";
+    document.getElementById("videoTitle").innerText = title;
+    document.getElementById("videoFrame").src = embedUrl;
 }
 
+function backToPoses() {
+    document.getElementById("videoSection").style.display = "none";
+    document.getElementById("posesSection").style.display = "block";
+    document.getElementById("videoFrame").src = "";
+}
+
+function startPractice(poseName) {
+    if (clickTimer) {
+        clearTimeout(clickTimer);
+        clickTimer = null;
+    }
+
+    localStorage.setItem("selectedPose", poseName);
+    window.location.href = "practice.html";
+}
 </script>
 
 </body>

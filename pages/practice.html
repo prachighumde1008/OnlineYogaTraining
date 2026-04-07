@@ -120,6 +120,15 @@ canvas {
 
 <body>
 
+    <script>
+let sub = localStorage.getItem("subscriptionStatus");
+
+if (sub !== "active") {
+    alert("Please subscribe first");
+    window.location.href = "subscription.html";
+}
+</script>
+
 <div class="camera-container">
 
     <!-- CAMERA -->

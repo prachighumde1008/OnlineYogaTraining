@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logout - Yoga AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #9b8463;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: #5c4033;
+    color: white;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    margin: 0 0 40px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    margin: 25px 0;
+    text-decoration: none;
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LOGOUT BOX */
+.logout-box {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+}
+
+.logout-box h2 {
+    margin-bottom: 15px;
+}
+
+.logout-box button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    margin: 10px;
+    background: #7fa998;
+    color: white;
+    cursor: pointer;
+}
+
+.logout-box button:hover {
+    opacity: 0.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>Yoga AI</h2>
+        <a href="../dashboard/user-dashboard.html">Dashboard</a>
+        <a href="practice.html">Practice</a>
+        <a href="progress.html">Progress</a>
+        <a href="poses.html">Poses</a>
+        <a href="health_tips.html">Health Tips</a>
+        <a href="about.html">About</a>
+        <a href="../subscription.html">Subscription</a>
+        <a href="contact.html">Contact</a>
+        <a href="logout.html">Logout</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+        <div class="logout-box">
+            <h2>Are you sure you want to logout?</h2>
+            <button onclick="logout()">Yes, Logout</button>
+            <button onclick="goBack()">Cancel</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function logout() {
+    // remove only login-related data
+    localStorage.removeItem("selectedPose");
+
+    // if you saved login info, remove only that too
+    // localStorage.removeItem("loggedInUser");
+
+    // DO NOT use localStorage.clear();
+
+    window.location.href = "../index.html";
+}
+
+function goBack() {
+    window.history.back();
+}
+</script>
+
+</body>
+</html>
