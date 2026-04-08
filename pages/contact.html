@@ -7,147 +7,90 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+(function () {
+    emailjs.init({
+        publicKey: "yiDZL_X9SG7FawVyC"
+    });
+})();
+</script>
+
 <style>
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: #9b8463;
-}
+
+    background:
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url('https://i.pinimg.com/1200x/c5/e3/f1/c5e3f13871af024526dcf46ca82de410.jpg')
+        no-repeat center center/cover;
+}   
 
 .container {
     display: flex;
     min-height: 100vh;
 }
 
-/* SIDEBAR */
 .sidebar {
     width: 220px;
     background: #5c4033;
     color: white;
     padding: 30px 20px;
-    box-sizing: border-box;
 }
 
 .sidebar h2 {
-    margin: 0 0 40px;
-    font-size: 28px;
+    margin-bottom: 40px;
 }
 
 .sidebar a {
     display: block;
     color: white;
     text-decoration: none;
-    margin: 28px 0;
-    font-size: 24px;
+    margin: 25px 0;
+    font-size: 22px;
 }
 
-/* MAIN */
 .main {
     flex: 1;
-    padding: 30px 40px;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-}
-
-/* BACKGROUND CIRCLES */
-.main::before,
-.main::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.25;
-    z-index: 0;
-}
-
-.main::before {
-    width: 600px;
-    height: 600px;
-    border: 3px solid rgba(255,255,255,0.5);
-    left: -200px;
-    bottom: -180px;
-}
-
-.main::after {
-    width: 850px;
-    height: 850px;
-    border: 3px solid rgba(255,255,255,0.35);
-    right: -280px;
-    top: -280px;
-}
-
-.content {
-    position: relative;
-    z-index: 1;
+    padding: 30px;
     color: white;
 }
 
-/* TITLE */
-.page-title {
-    text-align: center;
-    font-size: 34px;
-    margin-bottom: 20px;
-}
-
-/* CONTACT BOX */
 .contact-box {
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
+    background: rgba(255,255,255,0.15);
     padding: 25px;
-    max-width: 700px;
-    margin: 0 auto;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: auto;
 }
 
-/* FORM */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.contact-form label {
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.contact-form input,
-.contact-form textarea {
+input, textarea {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
     border: none;
-    outline: none;
-    border-radius: 12px;
-    font-size: 16px;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
 
-.contact-form textarea {
-    min-height: 140px;
-    resize: vertical;
-}
-
-.contact-form button {
-    width: fit-content;
-    padding: 12px 28px;
+button {
+    padding: 12px 25px;
+    border-radius: 20px;
     border: none;
-    border-radius: 25px;
-    background: #8fc3b1;
+    background: #7fa998;
     color: white;
-    font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.contact-form button:hover {
-    opacity: 0.9;
+#successMsg {
+    display: none;
+    color: lightgreen;
 }
 
-.contact-info {
-    margin-top: 25px;
-    line-height: 1.8;
-    font-size: 17px;
+#errorMsg {
+    display: none;
+    color: red;
 }
 </style>
 </head>
@@ -156,57 +99,66 @@ body {
 
 <div class="container">
 
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-        <h2>Yoga AI</h2>
-        <a href="../dashboard/user-dashboard.html">Dashboard</a>
-        <a href="practice.html">Practice</a>
-        <a href="progress.html">Progress</a>
-        <a href="poses.html">Poses</a>
-        <a href="health_tips.html">Health Tips</a>
-        <a href="about.html">About</a>
-        <a href="../subscription.html">Subscription</a>
-        <a href="contact.html">Contact</a>
-        <a href="logout.html">Logout</a>
-    </div>
+<div class="sidebar">
+    <h2>Yoga AI</h2>
+    <a href="../dashboard/user-dashboard.html">Dashboard</a>
+    <a href="practice.html">Practice</a>
+    <a href="progress.html">Progress</a>
+    <a href="poses.html">Poses</a>
+    <a href="health_tips.html">Health Tips</a>
+    <a href="about.html">About</a>
+    <a href="../subscription.html">Subscription</a>
+    <a href="contact.html">Contact</a>
+    <a href="logout.html">Logout</a>
+</div>
 
-    <!-- MAIN -->
-    <div class="main">
-        <div class="content">
+<div class="main">
 
-            <h1 class="page-title">Contact Us</h1>
+    <h1>Contact Us</h1>
 
-            <div class="contact-box">
-                <form class="contact-form">
-                    <div>
-                        <label for="name">Your Name</label><br>
-                        <input type="text" id="name" placeholder="Enter your name">
-                    </div>
+    <div class="contact-box">
 
-                    <div>
-                        <label for="email">Your Email</label><br>
-                        <input type="email" id="email" placeholder="Enter your email">
-                    </div>
+        <form onsubmit="sendMessage(event)">
 
-                    <div>
-                        <label for="message">Your Message</label><br>
-                        <textarea id="message" placeholder="Write your message here..."></textarea>
-                    </div>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
 
-                    <button type="submit">Send Message</button>
-                </form>
+            <button type="submit">Send Message</button>
 
-                <div class="contact-info">
-                    <p><strong>Email:</strong> support@yogaai.com</p>
-                    <p><strong>Phone:</strong> +91 98765 43210</p>
-                    <p><strong>Address:</strong> Pune, Maharashtra, India</p>
-                </div>
-            </div>
+            <p id="successMsg">✅ Message sent successfully!</p>
+            <p id="errorMsg">❌ Failed to send message</p>
 
-        </div>
+        </form>
+
     </div>
 
 </div>
+
+</div>
+
+<script>
+function sendMessage(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+
+    emailjs.send("service_y2xqluw", "template_eynrlt8", {
+        name: name,
+        email: email,
+        message: message
+    })
+    .then(function() {
+        document.getElementById("successMsg").style.display = "block";
+        document.getElementById("errorMsg").style.display = "none";
+    })
+    .catch(function(error) {
+        document.getElementById("errorMsg").style.display = "block";
+    });
+}
+</script>
 
 </body>
 </html>

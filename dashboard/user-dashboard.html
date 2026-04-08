@@ -128,7 +128,7 @@
 
         <!-- MAIN CONTENT -->
         <div class="main-content">
-            <div class="header">Welcome to Your Dashboard 🌿</div>
+            <div class="header" id="welcomeUser">Welcome 🌿</div>
 
             <div class="dashboard-cards">
 
@@ -156,6 +156,16 @@
         </div>
 
     </div>
+
+<script>
+let name = localStorage.getItem("userName");
+
+if (name) {
+    document.getElementById("welcomeUser").innerText = "Welcome " + name + " 🌿";
+} else {
+    window.location.href = "../login.html"; // protect dashboard
+}
+</script>
 
 </body>
 </html>

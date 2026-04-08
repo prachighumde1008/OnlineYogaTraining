@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Yoga AI</title>
+    <title>Register - Yoga AI</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -14,23 +14,22 @@
             margin: 0;
             height: 100vh;
             font-family: 'Poppins', sans-serif;
-            background: #eef5f2;
         }
 
-        .login-container {
+        .register-container {
             display: flex;
             height: 100vh;
         }
 
-        /* LEFT IMAGE */
-        .login-image {
+        /* LEFT SIDE IMAGE */
+        .register-image {
             flex: 1;
             background: linear-gradient(rgba(146, 100, 85, 0.4), rgba(34,49,63,0.4)),
                         url('https://i.pinimg.com/736x/d6/ad/de/d6adde1ca7d15d49cf8a77543c9fa6bd.jpg') no-repeat center/cover;
         }
 
-        /* RIGHT SIDE */
-        .login-form {
+        /* RIGHT SIDE WITH BACKGROUND IMAGE */
+        .register-form {
             flex: 1;
             display: flex;
             justify-content: center;
@@ -42,29 +41,34 @@
 
         /* FORM BOX */
         .form-box {
-            width: 340px;
+            width: 360px;
             padding: 30px;
             border-radius: 15px;
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .form-box img {
+            width: 90px;
+            margin-bottom: 10px;
+            border-radius: 50%;
         }
 
         .form-box h2 {
-            text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #4f6f61;
         }
 
-        /* INPUTS */
         .form-box input {
             width: 100%;
             padding: 12px;
-            margin: 10px 0;
+            margin: 8px 0;
             border-radius: 10px;
             border: 1px solid #cfe3db;
-            outline: none;
             background-color: #f9fdfb;
+            outline: none;
             transition: 0.3s;
             box-sizing: border-box;
         }
@@ -74,7 +78,6 @@
             box-shadow: 0 0 5px rgba(127,169,152,0.4);
         }
 
-        /* BUTTON */
         .form-box button {
             width: 100%;
             padding: 12px;
@@ -82,53 +85,48 @@
             border-radius: 25px;
             background: linear-gradient(to right, #7fa998, #6c8f7a);
             color: white;
-            font-size: 15px;
             cursor: pointer;
+            margin-top: 10px;
             transition: 0.3s;
         }
 
         .form-box button:hover {
             transform: scale(1.03);
-            opacity: 0.95;
         }
 
-        /* LINKS */
         .form-box p {
-            text-align: center;
-            margin-top: 15px;
+            margin-top: 12px;
             font-size: 14px;
         }
 
         .form-box a {
             color: #6c8f7a;
             text-decoration: none;
-            font-weight: 500;
         }
 
         .form-box a:hover {
             text-decoration: underline;
         }
 
-        #loginMsg {
+        #successMsg {
             display: none;
-            text-align: center;
-            margin-top: 12px;
-            font-size: 14px;
-            font-weight: 600;
             color: green;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: 600;
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .login-container {
+            .register-container {
                 flex-direction: column;
             }
 
-            .login-image {
+            .register-image {
                 height: 40vh;
             }
 
-            .login-form {
+            .register-form {
                 height: 60vh;
             }
         }
@@ -137,71 +135,65 @@
 
 <body>
 
-    <div class="login-container">
+    <div class="register-container">
 
-        <!-- IMAGE SIDE -->
-        <div class="login-image"></div>
+        <!-- LEFT SIDE -->
+        <div class="register-image"></div>
 
-        <!-- FORM SIDE -->
-        <div class="login-form">
+        <!-- RIGHT SIDE -->
+        <div class="register-form">
             <div class="form-box">
-                <h2>Welcome Back 🌿</h2>
 
-                <form onsubmit="loginUser(event)">
-                    <input type="email" id="email" placeholder="Enter your email" required>
-                    <input type="password" id="password" placeholder="Enter your password" required>
+                <!-- IMAGE -->
+                <img src="images/yoga-icon.jpg" alt="Yoga">
 
-                    <button type="submit">Login</button>
+                <h2>Create Account 🌿</h2>
+
+                <form onsubmit="registerUser(event)">
+                    <input type="text" id="fullName" placeholder="Full Name" required>
+                    <input type="email" id="emailAddress" placeholder="Email Address" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+                    <button type="submit">Register</button>
                 </form>
 
-                <p id="loginMsg">✅ Login successful!</p>
+                <p id="successMsg">🎉 Registration Successful!</p>
 
-                <p>Don't have an account? 
-                    <a href="register.html">Register</a>
+                <p>Already have an account? 
+                    <a href="login.html">Login</a>
                 </p>
+
             </div>
         </div>
 
     </div>
 
     <script>
-        async function loginUser(event) {
+        function registerUser(event) {
             event.preventDefault();
 
-            let email = document.getElementById("email").value;
+            let name = document.getElementById("fullName").value;
+            let email = document.getElementById("emailAddress").value;
             let password = document.getElementById("password").value;
+            let confirm = document.getElementById("confirmPassword").value;
 
-            try {
-                const response = await fetch("http://127.0.0.1:5000/login", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        password: password
-                    })
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    document.getElementById("loginMsg").style.display = "block";
-
-                    localStorage.setItem("userName", result.user.name);
-                    localStorage.setItem("userEmail", result.user.email);
-
-                    setTimeout(() => {
-                        window.location.href = "dashboard/user-dashboard.html";
-                    }, 1000);
-                } else {
-                    alert(result.error);
-                }
-
-            } catch (error) {
-                alert("Server not running ❌");
-                console.error(error);
+            if (password !== confirm) {
+                alert("Passwords do not match ❌");
+                return;
             }
+
+            document.getElementById("successMsg").style.display = "block";
+
+            let subject = "New Registration - Yoga AI";
+            let body =
+                "User Registered Successfully%0D%0A%0D%0A" +
+                "Name: " + name + "%0D%0A" +
+                "Email: " + email + "%0D%0A" +
+                "Password: " + password;
+
+            window.location.href =
+                `mailto:prachighumde10@gmail.com?subject=${subject}&body=${body}`;
         }
     </script>
 
