@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Yoga AI</title>
 
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -12,6 +13,7 @@
             margin: 0;
             height: 100vh;
             font-family: 'Poppins', sans-serif;
+            background: #eef5f2;
         }
 
         .login-container {
@@ -36,7 +38,7 @@
         }
 
         .form-box {
-            width: 360px;
+            width: 340px;
             padding: 30px;
             border-radius: 15px;
             background: rgba(255, 255, 255, 0.6);
@@ -46,19 +48,20 @@
         }
 
         .form-box h2 {
-            margin-bottom: 15px;
+            text-align: center;
+            margin-bottom: 20px;
             color: #4f6f61;
-            font-size: 22px;
         }
 
         .form-box input {
             width: 100%;
             padding: 12px;
-            margin: 8px 0;
+            margin: 10px 0;
             border-radius: 10px;
             border: 1px solid #cfe3db;
-            background-color: #f9fdfb;
             outline: none;
+            background-color: #f9fdfb;
+            transition: 0.3s;
             box-sizing: border-box;
         }
 
@@ -74,39 +77,48 @@
             border-radius: 25px;
             background: linear-gradient(to right, #7fa998, #6c8f7a);
             color: white;
+            font-size: 15px;
             cursor: pointer;
-            margin-top: 10px;
-            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .form-box button:hover {
+            transform: scale(1.03);
+            opacity: 0.95;
         }
 
         .form-box p {
-            margin-top: 12px;
+            text-align: center;
+            margin-top: 15px;
             font-size: 14px;
         }
 
         .form-box a {
             color: #6c8f7a;
             text-decoration: none;
+            font-weight: 500;
         }
 
         .form-box a:hover {
             text-decoration: underline;
         }
 
-        #errorMsg {
+        #loginMsg {
             display: none;
-            color: red;
+            text-align: center;
+            margin-top: 12px;
             font-size: 14px;
-            margin-top: 10px;
             font-weight: 600;
+            color: green;
         }
 
-        #successMsg {
+        #errorMsg {
             display: none;
-            color: green;
+            text-align: center;
+            margin-top: 12px;
             font-size: 14px;
-            margin-top: 10px;
             font-weight: 600;
+            color: red;
         }
 
         @media (max-width: 768px) {
@@ -136,12 +148,12 @@
                 <h2>Welcome Back 🌿</h2>
 
                 <form onsubmit="loginUser(event)">
-                    <input type="email" id="loginEmail" placeholder="Email Address" required>
-                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <input type="password" id="password" placeholder="Enter your password" required>
                     <button type="submit">Login</button>
                 </form>
 
-                <p id="successMsg">✅ Login successful!</p>
+                <p id="loginMsg">✅ Login successful!</p>
                 <p id="errorMsg">❌ Invalid email or password</p>
 
                 <p>Don't have an account?
@@ -156,15 +168,15 @@
         function loginUser(event) {
             event.preventDefault();
 
-            const email = document.getElementById("loginEmail").value.trim();
-            const password = document.getElementById("loginPassword").value;
+            let email = document.getElementById("email").value.trim().toLowerCase();
+            let password = document.getElementById("password").value;
 
-            const savedUser = JSON.parse(localStorage.getItem("yogaUser"));
-            const errorMsg = document.getElementById("errorMsg");
-            const successMsg = document.getElementById("successMsg");
+            let savedUser = JSON.parse(localStorage.getItem("yogaUser"));
+            let loginMsg = document.getElementById("loginMsg");
+            let errorMsg = document.getElementById("errorMsg");
 
+            loginMsg.style.display = "none";
             errorMsg.style.display = "none";
-            successMsg.style.display = "none";
 
             if (!savedUser) {
                 alert("No registered user found. Please register first.");
@@ -175,12 +187,13 @@
             if (email === savedUser.email && password === savedUser.password) {
                 localStorage.setItem("isLoggedIn", "true");
                 localStorage.setItem("loggedInUserName", savedUser.name);
+                localStorage.setItem("loggedInUserEmail", savedUser.email);
 
-                successMsg.style.display = "block";
+                loginMsg.style.display = "block";
 
                 setTimeout(() => {
                     window.location.href = "dashboard/user-dashboard.html";
-                }, 1500);
+                }, 1000);
             } else {
                 errorMsg.style.display = "block";
             }
