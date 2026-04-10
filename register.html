@@ -6,6 +6,7 @@
 <title>Register - Yoga AI</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
@@ -40,6 +41,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
     background:
         linear-gradient(rgba(247, 251, 249, 0.85), rgba(150, 107, 95, 0.85)),
         url('https://i.pinimg.com/736x/d3/0d/9a/d30d9a7a2bb380bf2c69064d1722b134.jpg') no-repeat center/cover;
@@ -52,7 +54,6 @@ body {
     background: rgba(255,255,255,0.6);
     backdrop-filter: blur(10px);
     text-align: center;
-    box-sizing: border-box;
 }
 
 .form-box h2 {
@@ -65,7 +66,6 @@ body {
     margin: 8px 0;
     border-radius: 10px;
     border: none;
-    box-sizing: border-box;
 }
 
 .form-box button {
@@ -81,7 +81,6 @@ body {
 #msg {
     margin-top: 10px;
     font-weight: bold;
-    font-size: 14px;
 }
 </style>
 </head>
@@ -89,64 +88,68 @@ body {
 <body>
 
 <div class="register-container">
-    <div class="register-image"></div>
 
-    <div class="register-form">
-        <div class="form-box">
-            <h2>Create Account 🌿</h2>
+<div class="register-image"></div>
 
-            <form onsubmit="registerUser(event)">
-                <input type="text" id="name" placeholder="Full Name" required>
-                <input type="email" id="email" placeholder="Email Address" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <input type="password" id="confirm" placeholder="Confirm Password" required>
-                <button type="submit">Register</button>
-            </form>
+<div class="register-form">
+<div class="form-box">
 
-            <p id="msg"></p>
-        </div>
-    </div>
+<h2>Create Account 🌿</h2>
+
+<form onsubmit="registerUser(event)">
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="email" id="email" placeholder="Email Address" required>
+<input type="password" id="password" placeholder="Password" required>
+<input type="password" id="confirm" placeholder="Confirm Password" required>
+
+<button type="submit">Register</button>
+</form>
+
+<p id="msg"></p>
+
+</div>
+</div>
+
 </div>
 
 <script>
-async function registerUser(e) {
+function registerUser(e){
     e.preventDefault();
 
-    let name = document.getElementById("name").value.trim();
-    let email = document.getElementById("email").value.trim().toLowerCase();
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let confirm = document.getElementById("confirm").value;
-    let msg = document.getElementById("msg");
 
-    if (password !== confirm) {
-        msg.innerText = "❌ Passwords do not match";
+    if(password !== confirm){
+        alert("Passwords do not match ❌");
         return;
     }
 
-    // Save user first
+    // save user locally
     localStorage.setItem("yogaUser", JSON.stringify({
         name: name,
         email: email,
         password: password
     }));
 
-    msg.innerText = "✅ Registration saved. Sending email...";
+    document.getElementById("msg").innerText = "Sending email...";
 
-    try {
-        await emailjs.send("service_y2xqluw", "template_yyrv24s", {
-            name: name,
-            email: email
-        });
-
-        msg.innerText = "✅ Registration successful!";
-    } catch (error) {
-        console.error("EmailJS register error:", error);
-        msg.innerText = "✅ Registration successful! Email could not be sent.";
-    }
-
-    setTimeout(() => {
-        window.location.href = "login.html";
-    }, 1500);
+    emailjs.send("service_y2xqluw", "template_yyrv24s", {
+        name: name,
+        email: email
+    })
+    .then(function(){
+        document.getElementById("msg").innerText = "✅ Registration Successful!";
+        
+        setTimeout(()=>{
+            window.location.href = "login.html";
+        },2000);
+    })
+    .catch(function(error){
+        document.getElementById("msg").innerText = "❌ Email failed";
+        console.log(error);
+    });
 }
 </script>
 
